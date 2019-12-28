@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.springmvc.dao.AuthorMapper">
+
+    <!-- 增加用户 -->
+    <insert id="addAuthor" parameterType="Author"  useGeneratedKeys="true" keyProperty="id">
+   
+        insert into author(authorname,password,age,sex,address,telephone,rname) 
+        values(#{authorname},#{password},#{age},#{sex},#{address},#{telephone},#{rname})
+    </insert>
+    <!-- 根据用户名查询 -->
+    <select id="findByAuthorName" resultType="Author">
+        select * from author where authorname=#{authortname}
+    </select>
+    
+     <!-- 根据用户名和密码查询 -->
+    <select id="findByAuthorNameAndPassword" resultType="Author">
+        select * from author where authorname=#{authorname} and password=#{password}
+    </select>
+ <!-- 查询所有作者信息 -->
+    <select id="findAuthor" resultType="Author">
+        select * from Author 
+    </select>
+    <!-- 更新作者 -->
+	<update id="updateAuthorById" parameterType="com.itheima.springmvc.pojo.Author">
+		update author
+		set
+		authorname = #{authorname,jdbcType=VARCHAR} ,
+		 age = #{age,jdbcType=INTEGER} ,
+		 password = #{password,jdbcType=VARCHAR} ,
+		 sex = #{sex,jdbcType=VARCHAR}, 
+		 address=#{address,jdbcType=VARCHAR} , 
+		 telephone=#{telephone,jdbcType=VARCHAR} ,
+		 rname=#{rname,jdbcType=VARCHAR}
+		where aid=#{aid,jdbcType=INTEGER}
+	</update>
+</mapper>

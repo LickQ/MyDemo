@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.springmvc.dao.HistoryMapper">
+
+    <!-- 增加纪录 -->
+    <insert id="addHisroy" parameterType="History"  useGeneratedKeys="true" keyProperty="id">
+        insert into history(tname,latestTime,state) 
+        values(#{tname},#{latestTime},#{state})
+    </insert>
+
+
+ <!-- 查询所有历史纪录信息-->
+    <select id="findAllHistory" resultType="History">
+        select * from history 
+    </select>
+    
+</mapper>

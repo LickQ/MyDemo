@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 写Sql语句 -->
+<mapper namespace="com.itheima.springmvc.dao.CategoryMapper">
+<select id="findAllCategory" resultType="Category">
+		select * from category
+	</select>
+<!-- 添加类别 -->
+	<insert id="addCategory" parameterType="String"
+		useGeneratedKeys="true" keyProperty="cid">
+		insert into
+		category(cname)
+		values(#{cname})
+	</insert>
+<!-- 删除类别 -->
+
+	<delete id="deleteCategoryById" parameterType="java.lang.Integer">
+		delete from category
+		where cid=#{cid,jdbcType=INTEGER}
+	</delete>
+	<!-- 根据类别名称查cid -->
+	<select id="findCidByCName" resultType="java.lang.Integer"
+		parameterType="String">
+		select * from category where cname =
+		#{cname,jdbcType=VARCHAR}
+	</select>
+</mapper>

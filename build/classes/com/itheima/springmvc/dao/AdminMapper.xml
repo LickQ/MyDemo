@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 写Sql语句 -->
+<mapper namespace="com.itheima.springmvc.dao.AdminMapper">
+  <!-- 根据用户名和密码查询 -->
+    <select id="Adminlogin" resultType="Admin">
+        select * from admin where adminname=#{adminname} and password=#{password}
+    </select>
+</mapper>

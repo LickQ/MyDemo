@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.springmvc.dao.ExpertMapper">
+
+    <!-- 增加用户 -->
+    <insert id="addExpert" parameterType="Expert"  useGeneratedKeys="true" keyProperty="id">
+   
+        insert into expert(expertname,password,age,sex,address,telephone,major,rname) 
+        values(#{expertname},#{password},#{age},#{sex},#{address},#{telephone},#{major},#{rname})
+    </insert>
+    <!-- 根据用户名查询 -->
+    <select id="findByExpertName" resultType="Expert">
+        select * from expert where expertname=#{expertname}
+    </select>
+    
+     <!-- 根据用户名和密码查询 -->
+    <select id="findByExpertNameAndPassword" resultType="Expert">
+        select * from expert where expertname=#{expertname} and password=#{password}
+    </select>
+ <!-- 查询所有专家信息 -->
+    <select id="findExpert" resultType="Expert">
+        select * from expert 
+    </select>
+    <!-- 更新作者 -->
+	<update id="updateExpertById" parameterType="com.itheima.springmvc.pojo.Expert">
+		update expert
+		set
+		expertname = #{expertname,jdbcType=VARCHAR} ,
+		password = #{password,jdbcType=VARCHAR} ,
+		 age = #{age,jdbcType=INTEGER} ,
+		 sex = #{sex,jdbcType=VARCHAR}, 
+		 address=#{address,jdbcType=VARCHAR} , 
+		 telephone=#{telephone,jdbcType=VARCHAR} ,
+		 major=#{major,jdbcType=VARCHAR} , 
+		 rname=#{rname,jdbcType=VARCHAR}
+		where eid=#{eid,jdbcType=INTEGER}
+	</update>
+</mapper>
